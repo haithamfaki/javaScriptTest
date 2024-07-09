@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <label for="number">First number:</label>
+    <input type="text" id="number" name="number" value="3">
+<button type="number" >displayImages</button>
+<h1>images</h1>
+<p>invalid value</p>
+</body>
+<script >
+
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 5px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Viewer</h1>
+    <form>
+        <label for="numImages">Number of Images: </label>
+        <input type="text" id="numImages" value="4">
+        <button type="button" onclick="displayTable()">Display Images</button>
+    </form>
+    <h2>Images</h2>
+    <div id="output"></div>
+
+    <script>
+        function displayTable() {
+            const numImages = parseInt(document.getElementById('numImages').value);
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+            if (isNaN(numImages) || numImages % 2 !== 0) {
+                outputDiv.innerHTML = '<p>Invalid value</p>';
+                return;
+            }
+
+                    v                                                                                                                 const table = document.createElement('table');
+            const rows = Math.ceil(numImages / 2);
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j < 2; j++) {
+                    const cell = document.createElement('td');
+                    const imgIndex = i * 2 + j + 1;
+                    if (imgIndex <= numImages) {
+                        const img = document.createElement('img');
+                        img.src = `college${imgIndex}.jpg`;
+                        cell.appendChild(img);
+                    }
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+
+            outputDiv.appendChild(table);
+        }
+    </script>
+</body>
+</html>
